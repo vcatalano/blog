@@ -1,0 +1,77 @@
+Hello tinker!
+=============
+
+- 今度はgithubでtinker
+
+.. highlight:: guess
+   :linenothreshold: 5
+
+::
+
+  mkvirtualenv capyburrow_sphinx
+  setvirtualenvproject
+  pip install sphinx
+  pip install tinkerer
+  tinker --setup
+  vim conf.py
+  tinker -b
+
+公開ディレクトリpublicを用意、githubでの公開がうまくいかなかったので、bitbucketにする。
+
+::
+
+  cd public
+  touch .nojekyll
+  rsync -av ../capyburrow/blog/html/ .
+  git init
+  git add .
+  git commit -m "first commit"
+  git remote add origin https://Capyburrow@bitbucket.org/Capyburrow/capyburrow.git
+  git push -u origin master
+
+- 言語指定を忘れない
+
+.. code-block:: guess
+   :emphasize-lines: 3,4
+   :linenos:
+
+   language = 'ja'
+
+- ハイフン2個がそのまま表示されるようにする
+
+.. code-block:: guess
+   :emphasize-lines: 3,4
+   :linenos:
+
+   html_use_smartypants = False
+
+- サイドバーの設定を増やす
+
+.. code-block:: guess
+   :emphasize-lines: 3,4
+   :linenos:
+
+   html_sidebars = {
+   "**": ["recent.html", "categories.html", "tags.html", "searchbox.html"]
+   }
+
+- highlightと同じようにcode-blockでも行番号を出してみる。
+
+.. code-block:: guess
+   :emphasize-lines: 3,4
+   :linenos:
+
+   mkvirtualenv capyburrow_sphinx
+   setvirtualenvproject
+   pip install sphinx
+   pip install tinkerer
+   tinker --setup
+   vim conf.py
+   tinker -b
+
+今度からcode-blockを使うようにしてみよう。
+
+.. author:: default
+.. categories:: Python
+.. tags:: tinekerer, sphinx
+.. comments::
